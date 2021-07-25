@@ -3,9 +3,12 @@ const Schema = mongoose.Schema;
 
 //schema for finding pet survey 
 const FindpetSchema = new Schema ({
-    name: String, //should name and email just refer to the User when I set that up? 
-    zip: Number,
-    petType: String  
+    name: String, //name of pet
+    petType: String,  //dog, cat, etc.
+    age: Number,
+    zip: Number, //where pet is located 
+    description: String,
+    //images: [ImageSchema]
 });
 
 
