@@ -7,6 +7,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const Findpet = require('./models/findPet');
+const axios = require('axios');
 const key = process.env.PETFINDER_KEY;
 const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
@@ -48,6 +49,94 @@ app.get('/pets', async (req, res) => {
 
 
 
+
+
+//testing
+// const instance = axios.create({
+//     method: 'get',
+//     baseURL: 'https://api.petfinder.com/v2/animals',
+//     headers: `'Authorization: Bearer ${accessToken}'`,
+// });
+
+//const url = 'https://api.petfinder.com/v2/animals';
+
+
+// const instance = axios.get( url, {auth: {
+//     method: 'GET',
+//     headers: 'Authorization: Bearer' + 'accessToken'
+// }}).then((res)=>{
+//     console.log(res.data);})
+//     .catch((e)=>{
+//         console.log(e)});
+
+const config = { 
+    headers: { 
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}` 
+    }
+};
+
+const bodyParameters = {
+    key: 'value',
+};
+
+const getPets = async () => {
+    const res = await axios.get('https://api.petfinder.com/v2/animals', config)
+    console.log(res.data);
+    //console.log(data);
+}
+
+
+// async function getPets() {
+//     const response = await axios({
+//         baseURL: 'https://api.petfinder.com/v2/animals',
+//         method: 'GET',
+//         bodyParameters,
+//         config
+//     })
+//     console.log(response.data);
+//     console.log(data);
+// }
+
+getPets();
+
+//app.get('/index', async(req, res) => {
+// async function getPets() {
+//     try {
+//         const response = await axios.get(instance);
+//         //return await axios.get(`curl -H Authorization: Bearer ${accessToken} 'https://api.petfinder.com/v2/animals'`)
+//         console.log(response);
+//         const data = await response.json();
+//         console.log(data);
+//         res.render(data);
+//         //showPets(data.message);
+//     } catch(error) {
+//         console.error("Oh no! There was an error!", error);
+//     }
+// //});
+// };
+
+//getPets();
+
+
+//calling function to initiate
+//getPets();
+
+
+
+
+// const showPets = async() => {
+//     const pets = await getPets();
+//     if (pets){
+//         console.log(pets);
+//         //(data);
+//         console.log(message);
+//         console.log(instance);
+//     }
+// }
+
+// showPets();
 
 
 app.listen(3000, () => {
