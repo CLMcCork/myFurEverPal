@@ -62,7 +62,8 @@ const config = {
 const getPets = async () => {
     const res = await axios.get('https://api.petfinder.com/v2/animals', config)
     console.log(res.data);
-    //console.log(data);
+    //const { animals } = await res.json();
+   
 }
 
 //calling the getPets function 
