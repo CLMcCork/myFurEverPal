@@ -48,27 +48,7 @@ app.get('/pets', async (req, res) => {
 })
 
 
-
-
-
-//testing
-// const instance = axios.create({
-//     method: 'get',
-//     baseURL: 'https://api.petfinder.com/v2/animals',
-//     headers: `'Authorization: Bearer ${accessToken}'`,
-// });
-
-//const url = 'https://api.petfinder.com/v2/animals';
-
-
-// const instance = axios.get( url, {auth: {
-//     method: 'GET',
-//     headers: 'Authorization: Bearer' + 'accessToken'
-// }}).then((res)=>{
-//     console.log(res.data);})
-//     .catch((e)=>{
-//         console.log(e)});
-
+//setting the headers to use the access token 
 const config = { 
     headers: { 
         Accept: 'application/json',
@@ -77,29 +57,34 @@ const config = {
     }
 };
 
-const bodyParameters = {
-    key: 'value',
-};
 
+//function to get all pets 
 const getPets = async () => {
     const res = await axios.get('https://api.petfinder.com/v2/animals', config)
     console.log(res.data);
     //console.log(data);
 }
 
-
-// async function getPets() {
-//     const response = await axios({
-//         baseURL: 'https://api.petfinder.com/v2/animals',
-//         method: 'GET',
-//         bodyParameters,
-//         config
-//     })
-//     console.log(response.data);
-//     console.log(data);
-// }
-
+//calling the getPets function 
 getPets();
+
+
+//testing to see if can render the data for a specific id 
+
+
+
+
+
+
+//app.get('/pets/:id', async (req, res) => {
+//     //res.render('/');
+// });
+
+
+
+
+
+
 
 //app.get('/index', async(req, res) => {
 // async function getPets() {
