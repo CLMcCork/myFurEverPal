@@ -8,10 +8,11 @@
 </head>
 <body>
     <h1>My Furever Pal</h1>
-    <ul>
-    <% for (let pet of pets) { %> 
-        <li><a href='/pets/<%= pet._id %>"><%= pet.name %></a></li>
-    <% } %> 
-    </ul>
+    <div>
+        <%= animals %>
+    </div>
+    <script>
+        const animals = <%- JSON.stringify(animals) %>
+    </script>
 </body>
 </html>
