@@ -9,10 +9,10 @@
 <body>
     <h1>My Furever Pal</h1>
     <div>
-        <%= animals %>
+        <% for(let i = 0 ; i < 20; i++){ %>
+            <p><%= animals %></p>
+        <% } %>
     </div>
-    <script>
-        const animals = <%- JSON.stringify(animals) %>
-    </script>
+    
 </body>
 </html>

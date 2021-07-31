@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //schema for finding pet survey 
-const FindpetSchema = new Schema ({
+const AnimalsSchema = new Schema ({
     name: String, //name of pet
     petType: String,  //dog, cat, etc.
     age: Number,
@@ -12,4 +12,4 @@ const FindpetSchema = new Schema ({
 });
 
 
-module.exports = mongoose.model('Findpet', FindpetSchema);
+module.exports = mongoose.model('Animals', AnimalsSchema);
