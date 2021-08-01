@@ -13,6 +13,11 @@ const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
 //const bodyParser = require('body-parser'); this is deprecated--don't use (i uninstalled it from dependencies)
 const fetch = require('node-fetch');
+const animals = require('./models/animals');
+
+
+//vars for routes 
+const indexRoutes = require('./routes/index');
 
 
 mongoose.connect('mongodb://localhost:27017/myFurEverPal', {
@@ -32,15 +37,22 @@ db.once('open', () => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-//this is new:
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // parse application/x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 //app.use(bodyParser.json())
+
+
+//Routes
+app.use('/', indexRoutes);
+
+
 
 
 app.get('/', (req, res) => {
@@ -70,6 +82,8 @@ app.get('/index', async (req, res) => {
 
         const { access_token } = await tokenRes.json();
 
+       
+
         const petType = await fetch(
             `https://api.petfinder.com/v2/animals`,
             {
@@ -81,15 +95,18 @@ app.get('/index', async (req, res) => {
                 }
             }
         )
+
+        
+
+
         //const { animals } = await petType.json(); 
+        //KEEP below
         const animal = await petType.json(); 
         //console.log(animals);
-        const animals = (JSON.stringify(animal));
+        //KEEP below 
+        const animals = JSON.stringify(animal);
         // const {animals} = (JSON.stringify(animal));
-       
         
-        
-       
 
         //const [ { id, url, type, age, gender, description } ] = animals;
         //console.log({ id, url, type, age, gender, description }); //prints ONE object w/ one's pet's info --just prints these items though (no photo) 
@@ -103,12 +120,15 @@ app.get('/index', async (req, res) => {
         //console.log(animals.length)
         //console.log(animals.name)
         //console.log(animals)
+        //KEEP below
         console.log(animal.animals[0].id, animal.animals[0].url, animal.animals[0].type, animal.animals[0].age, animal.animals[0].gender, animal.animals[0].description)
        //^^this prints the id, url, etc for the first object in the array 
        //need to figure out how to get this to display in ejs 
         
        //res.render('pets/index', { animals: [{'id': id, url: url}] });
+       //KEEP below 
        res.render('pets/index', { animals });
+         
         
         
         //res.render('pets/index', { animals: (res.body)});
@@ -123,6 +143,8 @@ app.get('/index', async (req, res) => {
         console.log(error);
     }
 });
+
+
 
 
 
