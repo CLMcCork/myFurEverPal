@@ -67,44 +67,48 @@ app.get('/', (req, res) => {
 // });
 
 
+//KEEP 71-95
+// app.get('/index', async (req, res) => {
+//     try {
+//         const tokenRes = await fetch('https://api.petfinder.com/v2/oauth2/token', {
+//             method: 'POST',
+//             body: `grant_type=client_credentials&client_id=${key}&client_secret=${secret}`,
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded',
+//             },
+//         });
 
-app.get('/index', async (req, res) => {
-    try {
-        const tokenRes = await fetch('https://api.petfinder.com/v2/oauth2/token', {
-            method: 'POST',
-            body: `grant_type=client_credentials&client_id=${key}&client_secret=${secret}`,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            //new
-            //json: true
-        });
-
-        const { access_token } = await tokenRes.json();
+//         const { access_token } = await tokenRes.json();
 
        
 
-        const petType = await fetch(
-            `https://api.petfinder.com/v2/animals`,
-            {
-                headers: {
-                    Authorization: `Bearer ${access_token}`,
-                    //'Content-Type': 'application/x-www-form-urlencoded',
-                    //json: true
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
+//         const petType = await fetch(
+//             `https://api.petfinder.com/v2/animals`,
+//             {
+//                 headers: {
+//                     Authorization: `Bearer ${access_token}`,
+//                     //'Content-Type': 'application/x-www-form-urlencoded',
+//                     //json: true
+//                     'Content-Type': 'application/json'
+//                 }
+//             }
+//         )
 
         
 
 
         //const { animals } = await petType.json(); 
+        
+        
         //KEEP below
-        const animal = await petType.json(); 
+        //const animal = await petType.json(); 
         //console.log(animals);
+        
+        
         //KEEP below 
-        const animals = JSON.stringify(animal);
+        //const animals = JSON.stringify(animal);
+        
+        
         // const {animals} = (JSON.stringify(animal));
         
 
@@ -120,29 +124,34 @@ app.get('/index', async (req, res) => {
         //console.log(animals.length)
         //console.log(animals.name)
         //console.log(animals)
+        
+        
         //KEEP below
-        console.log(animal.animals[0].id, animal.animals[0].url, animal.animals[0].type, animal.animals[0].age, animal.animals[0].gender, animal.animals[0].description)
-       //^^this prints the id, url, etc for the first object in the array 
+        //console.log(animal.animals[0].id, animal.animals[0].url, animal.animals[0].type, animal.animals[0].age, animal.animals[0].gender, animal.animals[0].description)
+       
+        //^^this prints the id, url, etc for the first object in the array 
        //need to figure out how to get this to display in ejs 
         
        //res.render('pets/index', { animals: [{'id': id, url: url}] });
+       
+       
        //KEEP below 
-       res.render('pets/index', { animals });
+       //res.render('pets/index', { animals });
          
         
         
         //res.render('pets/index', { animals: (res.body)});
         // const data = await petType.json();
         // const newAnimals = (res.body);
-        // res.render('pets/index', { data, newAnimals });
+        //res.render('pets/index', { data, newAnimals });
          //console.log(res.body);
     
     
-        
-    } catch (error) {
-        console.log(error);
-    }
-});
+        //KEEP 148-1515
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 
 
 
