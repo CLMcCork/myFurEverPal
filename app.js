@@ -11,9 +11,10 @@ const axios = require('axios');
 const key = process.env.PETFINDER_KEY;
 const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
-//const bodyParser = require('body-parser'); this is deprecated--don't use (i uninstalled it from dependencies)
+// const bodyParser = require('body-parser'); //this is deprecated...
 const fetch = require('node-fetch');
 const animals = require('./models/animals');
+
 
 
 //vars for routes 
@@ -41,16 +42,23 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+//below is used to fix CORS issue 
+app.use((req, res, next) =>{
+    res.setHeader('Access-Control-Allow-Origin', '*'); //*=wildcard, can change to specific domains 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); //can change to whichever ones i need 
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded //this would need <form> encoded data 
 //app.use(bodyParser.urlencoded({ extended: false }))
 
-// parse application/json
-//app.use(bodyParser.json())
+
 
 
 //Routes
-app.use('/', indexRoutes);
+app.use('/index', indexRoutes);
+
 
 
 
