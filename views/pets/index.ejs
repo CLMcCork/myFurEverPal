@@ -15,6 +15,8 @@
 
         <% animals.forEach(function(animal, index) { %>
             <p> 
+            
+
                 <%= animal.name %> 
                 <%= animal.id %> 
                 <%= animal.type %> 
@@ -22,11 +24,10 @@
                 <%= animal.gender %> 
                 <%= animal.description %> 
                 <%= animal.url %>
-                <% if (animal.primary_photo_cropped !== null) { %>
-                    <% return %>
-                    <%= animal.primary_photo_cropped %> 
-                <% } %> 
                 
+                <% if (animal.primary_photo_cropped !== null) { %>
+                    <img src="<%= animal.primary_photo_cropped.small %>" alt="Pet Photo">
+                <% } %> 
             </p>
         
         <% }) %>
