@@ -64,6 +64,8 @@ exports.getPetFinder = async (req, res, next) => {
             // const pets = data1['id'];
             // console.log(pets)
             //const pets = JSON.stringify(data.animals);
+            //console.log(data);
+            //console.log(data.animals)
             console.log(data.animals[0]['id']); 
             // const animals = new Animals(pets);
             // console.log(animals);
@@ -74,29 +76,60 @@ exports.getPetFinder = async (req, res, next) => {
             //res.render('pets/index',  { animals } ); //just gives {_id: a;dkfaslldf }
             // res.render('pets/index',  { animals } ); //also try animals : data1 
            
-            // let animals = []; 
-            let animalName = data.animals[0]['name'];
-            //const animalName = data.animals['name'];
-            let animalID = data.animals[0]['id'];
-            let petType = data.animals[0]['type'];
-            // age: Number,
-            // zip: Number, //where pet is located 
-            let description = data.animals[0]['description']
+            
+            // const pets = {
+            //     name: data.animals.name,
+            //     id: data.animals.id,
+            //     type: data.animals.type,
+            //     description: data.animals.description
+            // }
 
-            // res.status(200).json({
-            //      animalName, animalID, petType, description
-            //     // animals: (data.animals[0]['id', 'name', 'type', 'description']) //just prints the description of one animal 
-            //     // animals: (data.animals[0].type, //this just puts whatever was last--the id prints
-            //     //             data.animals[1].id)
-            // });
+            // let array = data.animals;
+            // for (let i = 0; i < animals.length; i++) {
+            //     array[i] = animals[i]['id']
+            // } 
+
+            // console.log(array);
+           
+         // ******let i = 0;
+             
+
+            // let animalName = data.animals[i]['name'];
+            // //console.log(typeof(animalName)) string 
+            // //const animalName = data.animals['name'];
+            // let animalID = data.animals[i]['id'];
+            // let petType = data.animals[i]['type'];
+            // // age: Number,
+            // // zip: Number, //where pet is located 
+            // let description = data.animals[i]['description']
+            // let image = data.animals[i]['photos']
+
+
+            
+
+            //  res.status(200).json({
+                // animals
+                //   animals: `${animalName}, ${animalID}, ${petType}, ${description}, ${image}`
+                //   animalName, animalID, petType, description
+            // //     // animals: (data.animals[0]['id', 'name', 'type', 'description']) //just prints the description of one animal 
+            // //     // animals: (data.animals[0].type, //this just puts whatever was last--the id prints
+            // //     //             data.animals[1].id)
+            //   });
 
             
 
             //res.render('pets/index', { animals });
             // res.render('pets/index',  { animals : (data.animals[0]['id']) } );
-            res.render('pets/index',  { animals : [animalName, animalID, petType, description] } );
+            
+
+
+            //res.render('pets/index',  { animals : [`${pets}`] } );
+
+            //THE BELOW IS WORKING THE BEST SO FAR:
+             res.render('pets/index',  { animals : data.animals } );
+             //res.render('pets/index',  { animals : [animalName, animalID, petType, description, image] } );
             //DON"T USE RES.RENDER and VIEWS!! 
-        })
+        });
   
         
   

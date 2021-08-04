@@ -13,16 +13,31 @@
         
        
 
-        <% for(let i = 0 ; i < 10; i++){ %>
-            <p><%= animals %></p>
-        <% } %>
+        <% animals.forEach(function(animal, index) { %>
+            <p> 
+                <%= animal.name %> 
+                <%= animal.id %> 
+                <%= animal.type %> 
+                <%= animal.age %> 
+                <%= animal.gender %> 
+                <%= animal.description %> 
+                <%= animal.url %>
+                <% if (animal.primary_photo_cropped !== null) { %>
+                    <% return %>
+                    <%= animal.primary_photo_cropped %> 
+                <% } %> 
+                
+            </p>
+        
+        <% }) %>
 
             
         
     
     </div>  
     <script>
-        
+        const animals = '<%- JSON.stringify(animals) %>'
+            
     </script>
 
 </body>
