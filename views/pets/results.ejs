@@ -18,8 +18,19 @@
                 <% if (animal.primary_photo_cropped !== null) { %>
                     <img src="<%= animal.primary_photo_cropped.small %>" alt="Pet Photo">
                 <% } else { %>
+                    
                     <img src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=67" alt="Cat & Dog Photo">
                 <% } %> 
+            
+
+                <%= animal.name %> 
+                <%= animal.id %> 
+                <%= animal.type %> 
+                <%= animal.age %> 
+                <%= animal.gender %> 
+                <%= animal.description %> 
+                <%= animal.url %>
+                
                 
             </p>
         
