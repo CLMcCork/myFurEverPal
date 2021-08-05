@@ -9,7 +9,7 @@ const Animals = require('../models/animals');
 const indexController = require('../controllers/index');
 
 //get data from petfinder /index/pf 
-router.get('/pf', indexController.getPetFinder);
+router.get('/index', indexController.getPetFinder);
 
 // GET /index/animals 
 router.get('/animals', indexController.getAnimals);
