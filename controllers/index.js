@@ -36,7 +36,7 @@ exports.getPetFinder = async (req, res, next) => {
   
         //access the petfinder API 
         const petType = await fetch(
-            `https://api.petfinder.com/v2/animals`,
+            `https://api.petfinder.com/v2/animals/?limit=1`,
             {
                 headers: {
                     Authorization: `Bearer ${access_token}`,
@@ -61,4 +61,7 @@ exports.getPetFinder = async (req, res, next) => {
  };
 
 
- //
+ //display only 1 image 
+ exports.postImage = (req, res, next) => {
+     
+ }
