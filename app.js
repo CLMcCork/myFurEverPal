@@ -14,9 +14,16 @@ const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
 // const bodyParser = require('body-parser'); //this is deprecated...
 const fetch = require('node-fetch');
-const animals = require('./models/animals');
+//const animals = require('./models/animals');
 
 
+
+
+
+//testing 
+//  app.locals = require('./public/javascripts/changeColor');
+
+// app.locals.changeColor = require('./public/javascripts/changeColor');
 
 //vars for routes 
 const indexRoutes = require('./routes/index');

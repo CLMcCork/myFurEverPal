@@ -2,6 +2,12 @@ const fetch = require('node-fetch');
 const key = process.env.PETFINDER_KEY;
 const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
+const Animals = require('../models/animals');
+// const { JSDOM } = require( "jsdom" );
+// const { window } = new JSDOM( "" );
+// const $ = require( "jquery" )( window ); 
+//testing
+// const changeColor = require('../public/javascripts/changeColor');
 
 //delete this eventually 
 exports.getAnimals = (req, res, next) => {
@@ -36,7 +42,7 @@ exports.getPetFinder = async (req, res, next) => {
   
         //access the petfinder API 
         const petType = await fetch(
-            `https://api.petfinder.com/v2/animals/?limit=1`,
+            `https://api.petfinder.com/v2/animals`,
             {
                 headers: {
                     Authorization: `Bearer ${access_token}`,
@@ -48,11 +54,26 @@ exports.getPetFinder = async (req, res, next) => {
         //take the response from petfinder api and make it a json 
         .then(res => res.json())
         
+        
         //then stringify the data from the response 
         .then(data => {
-            const animals = JSON.stringify(data);
+         
+        //THIS HELPS w/ UNDERSTANDING THE DATA!!
+        // Object.entries(data).map(data => {
+        //     const key   = data[0]; //animals
+        //     const value = data[1]; //array of all the objects 
+        //     const dunno = data[1][1];
+        //    //console.log(key);
+        //    //console.log(value);
+        //    console.log(dunno); //prints [1] item in the array and undefined 
+        //  });
+        
+        console.log(data.animals[0].id) //prints animal [0]'s id
+            //const animals = JSON.stringify(data);
             res.render('pets/index',  { animals : data.animals });
         });
+
+    
 
     //catch if any errors  
     } catch (error) {
@@ -61,7 +82,20 @@ exports.getPetFinder = async (req, res, next) => {
  };
 
 
- //display only 1 image 
- exports.postImage = (req, res, next) => {
-     
- }
+ //display next image 
+
+
+
+
+
+
+//******** */
+//what if, instead of getting whole animals object in export getPetFinder, just got the pet photos object?
+//then in ejs --loop over and show the first one only
+//then when click on slider can add that photo to results page or notresults page and 
+//call the function to viewNextPet (which just loops throught the array of photos that 
+//have been called from animals)
+
+
+
+
