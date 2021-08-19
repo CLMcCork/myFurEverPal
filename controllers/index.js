@@ -42,7 +42,8 @@ exports.getPetFinder = async (req, res, next) => {
   
         //access the petfinder API 
         const petType = await fetch(
-            `https://api.petfinder.com/v2/animals`,
+            //`https://api.petfinder.com/v2/animals`,
+            `https://api.petfinder.com/v2/animals/?limit=1`,
             {
                 headers: {
                     Authorization: `Bearer ${access_token}`,
@@ -86,6 +87,59 @@ exports.getPetFinder = async (req, res, next) => {
 
  //display next image 
 
+
+
+
+ exports.getNextPet = async (req, res, next) => {
+    //onclick of arrow, redirect to getPetFinder
+    //const html = res.render({ arrowButton: "getNexPetFunction();"})
+        try {
+            const tokenRes = await fetch('https://api.petfinder.com/v2/oauth2/token', {
+                method: 'POST',
+                body: `grant_type=client_credentials&client_id=${key}&client_secret=${secret}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            });
+      
+            const { access_token } = await tokenRes.json();
+      
+            //access the petfinder API 
+            const petType = await fetch(
+                //`https://api.petfinder.com/v2/animals`,
+                `https://api.petfinder.com/v2/animals/?limit=1`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${access_token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+            
+            //take the response from petfinder api and make it a json 
+            .then(res => res.json())
+            
+            
+            //then stringify the data from the response 
+            .then(data => {
+             
+                res.render('pets/index',  { animals : data.animals });
+            });
+    
+        
+    
+        //catch if any errors  
+        } catch (error) {
+            console.log(error);
+        }
+    
+        next(); //do i need to call next?
+     };
+
+
+
+   
+    
 
 
 

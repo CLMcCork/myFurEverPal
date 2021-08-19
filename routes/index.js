@@ -19,6 +19,8 @@ router.post('/animal', indexController.postAnimals);
 
 // //testing
 // router.get('/changecolor', indexController.changeColor);
+
+router.get('/getnextpet', indexController.getNextPet);
   
   
  module.exports = router; 

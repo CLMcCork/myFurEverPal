@@ -1,11 +1,13 @@
-async function changeColor(newColor) { 
-    const img = document.getElementsByClassName('img');
-    img.style.color = newColor;
-    console.log('ON CLICK IS WORKING!')
-   };
+// async function changeColor(newColor) { 
+//     const img = document.getElementsByClassName('img');
+//     img.style.color = newColor;
+//     console.log('ON CLICK IS WORKING!')
+//    };
 
 
-changeColor();
+// changeColor();
 
 
-module.exports =  changeColor; 
+// module.exports =  changeColor; 
+
+
