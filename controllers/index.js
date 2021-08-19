@@ -79,6 +79,8 @@ exports.getPetFinder = async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
+
+    next(); //do i need to call next?
  };
 
 

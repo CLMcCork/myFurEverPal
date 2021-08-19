@@ -6,6 +6,16 @@
     background-color: #6200EA;
 }
 
+.fa-arrow-right {
+    color: #12e023;
+}
+
+
+ /* text-align: center */
+.fa-arrow-left {
+    color: #f7021f;
+}
+
 
 /* .nav-link {
     padding: 0.25rem 0;
