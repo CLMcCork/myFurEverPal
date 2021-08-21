@@ -17,6 +17,22 @@
 }
 
 
+.btn-info {
+    background-color: #ead700;
+    border-color: #ead700;
+    border-radius: 25px;
+}
+
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+    background-color: #ead700;
+    color: #FFF;
+    border-color: #ead700;
+    box-shadow:none !important;
+      
+}
+
+
+
 /* .nav-link {
     padding: 0.25rem 0;
     font-weight: 700;
