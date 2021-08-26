@@ -137,9 +137,23 @@ exports.getPetFinder = async (req, res, next) => {
      };
 
 
-
-   
+//sends the R click animal info to the View Matches show page
+exports.swipeRight = async (req, res) => {
+    let matches = [];
     
+    //for each on swipe right click, push the animal photo (for now just photo--eventualy other details)
+    //into the array 
+    //then view the next pet (getNextPet)
+
+    //res.redirect('/getnextpet');
+};
+   
+
+//on click of "View Matches" button, render the view matches page 
+exports.viewMatches = async (req, res) => {
+    res.render('pets/viewmatches');
+     //res.send("you made it!")
+}; 
 
 
 
