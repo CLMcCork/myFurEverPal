@@ -140,8 +140,20 @@ exports.getPetFinder = async (req, res, next) => {
 //sends the R click animal info to the View Matches show page
 exports.swipeRight = async (req, res) => {
     let matches = [];
+    let newmatches = matches.push(req.animals);
     
-    //for each on swipe right click, push the animal photo (for now just photo--eventualy other details)
+    //console.log(res);
+    // console.log(matches);
+    // console.log(newmatches); 
+
+
+    //maybe in index.ejs, make link to getNextPetR and getNextPetL depending on the arrow clicked ,
+    //then create functions for these in the the controllers file 
+    //then push onto the swipeR array the item 
+    //then in viewMatches, can res.render swipeRight matches 
+
+    
+    //for each swipe right click, push the animal photo (for now just photo--eventualy other details)
     //into the array 
     //then view the next pet (getNextPet)
 
@@ -156,7 +168,15 @@ exports.viewMatches = async (req, res) => {
 }; 
 
 
-
+//TESTING 
+exports.submitData = (req, res) => {
+    const animal = new Animals;
+    const name = req.body.firstName; 
+    animal.save();
+    console.log(animal.description);
+    console.log(name);
+    res.redirect('/getnextpet')
+};
 
 
 //******** */
