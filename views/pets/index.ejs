@@ -12,7 +12,13 @@
    </div> 
 
 
-   <form action="/submit-data" method="POST" enctype="multipart/form-data">
+  <ul>
+    <% for(let animal of animals) { %>
+    <li><a href="/animal/<%= animal._id %>"><%= animal.name %></a></li>
+    <% } %> 
+  </ul>
+
+  
    <div class="container">
     <div class="row">
       <div class="col d-flex justify-content-center">
@@ -21,8 +27,7 @@
         </a>
       </div>
       <div class= "col d-flex justify-content-center">
-        <input name="description">
-        <a class="btn btn-large arrow-btn" href="/getnextpet">
+        <a class="btn btn-large arrow-btn" href="/swiperight">
           <i class="fas fa-arrow-right fa-align-right fa-10x"></i>
         </a>
       </div>
@@ -40,7 +45,7 @@
   </div>
 
  
-</form>
+
 
 
  

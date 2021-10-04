@@ -2,15 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //schema for finding pet survey 
-const AnimalsSchema = new Schema ({
+const AnimalSchema = new Schema ({
     name: String, //name of pet
     id: String,
-    petType: String,  //dog, cat, etc.
-    age: Number,
-    zip: Number, //where pet is located 
+    type: String,  //dog, cat, etc.
+    age: String,
+    contact: {
+        address: {
+            postcode: Number,
+        }
+    }, //where pet is located 
     description: String,
+    url: String
     //images: [ImageSchema]
 });
 
 
-module.exports = mongoose.model('Animals', AnimalsSchema);
+module.exports = mongoose.model('Animal', AnimalSchema);
