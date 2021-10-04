@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const key = process.env.PETFINDER_KEY;
 const secret = process.env.PETFINDER_SECRET;
 const accessToken = process.env.PETFINDER_ACCESS_TOKEN;
-const Animals = require('../models/animals');
+const Animal = require('../models/animals');
 // const { JSDOM } = require( "jsdom" );
 // const { window } = new JSDOM( "" );
 // const $ = require( "jquery" )( window ); 
@@ -69,7 +69,7 @@ exports.getPetFinder = async (req, res, next) => {
         //    console.log(dunno); //prints [1] item in the array and undefined 
         //  });
         
-        console.log(data.animals[0].id) //prints animal [0]'s id
+        //console.log(data.animals[0].id) //prints animal [0]'s id
             //const animals = JSON.stringify(data);
             res.render('pets/index',  { animals : data.animals });
         });
@@ -140,8 +140,10 @@ exports.getPetFinder = async (req, res, next) => {
 //sends the R click animal info to the View Matches show page
 exports.swipeRight = async (req, res) => {
     let matches = [];
-    let newmatches = matches.push(req.animals);
+    let newMatches = matches.push(res.animals.id);
+    console.log(newMatches);
     
+
     //console.log(res);
     // console.log(matches);
     // console.log(newmatches); 
@@ -168,23 +170,12 @@ exports.viewMatches = async (req, res) => {
 }; 
 
 
-//TESTING 
-exports.submitData = (req, res) => {
-    const animal = new Animals;
-    const name = req.body.firstName; 
-    animal.save();
-    console.log(animal.description);
-    console.log(name);
-    res.redirect('/getnextpet')
-};
+exports.showPage = async (req, res, next) => {
+    const { id } = req.params;
+    const animal = await Animal.findById(id);
+    res.render('pets/show', { animal });
+}
 
-
-//******** */
-//what if, instead of getting whole animals object in export getPetFinder, just got the pet photos object?
-//then in ejs --loop over and show the first one only
-//then when click on slider can add that photo to results page or notresults page and 
-//call the function to viewNextPet (which just loops throught the array of photos that 
-//have been called from animals)
 
 
 
